@@ -18,16 +18,16 @@ type CityOption = {
     label: string,
 } | null;
 
-type CurrentWeather = {
-    temperature: number,
-    time: string,
-    weathercode: number,
-    winddirection: number,
-    windspeed: number
-}
+// type CurrentWeather = {
+//     temperature: number,
+//     time: string,
+//     weathercode: number,
+//     winddirection: number,
+//     windspeed: number
+// }
 
-type CurrentWeatherUnits = {
-    interval: String
+type CurrentWeather = {
+    // interval: String
     is_day: String
     temperature: String
     time: String
