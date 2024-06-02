@@ -28,12 +28,12 @@ type CityOption = {
 
 type CurrentWeather = {
     // interval: String
-    is_day: String
-    temperature: String
-    time: String
-    weathercode: String
-    winddirection: String
-    windspeed: String
+    is_day: string
+    temperature: string
+    time: string
+    weathercode: string
+    winddirection: string
+    windspeed: string
 }
 
 type Daily = {
