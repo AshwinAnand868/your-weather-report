@@ -1,25 +1,73 @@
-import CityPicker from "./CityPicker"
+import weatherCodeToString from "@/lib/weatherCodeToString";
+import Image from "next/image";
+import CityPicker from "./CityPicker";
 
 type Props = {
-    city: string,
-    result: Root,
-    lat: string,
-    long: string
-}
+  city: string;
+  result: Root;
+  lat: string;
+  long: string;
+};
 
-function InformationPanel({city, result, lat, long}: Props) {
+function InformationPanel({ city, result, lat, long }: Props) {
   return (
     <div className="bg-gradient-to-br from-[#394568] to-[#1837BE] text-white p-10">
-        <div className="pb-5">
-            <h1 className="text-6xl font-bold">{decodeURI(city)}</h1>
-            <p className="text-xm text-gray-400">
-                Long/Lat: {long}, {lat}
-            </p>
-        </div>
-        <CityPicker />
+      <div className="pb-5">
+        <h1 className="text-6xl font-bold">{decodeURI(city)}</h1>
+        <p className="text-xm text-gray-400">
+          Long/Lat: {long}, {lat}
+        </p>
+      </div>
+      <CityPicker />
 
+      <hr className="my-10" />
+
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-xl">
+            {new Date().toLocaleDateString("en-GB", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+          <p className="font-extralight">
+            Timezone: {Intl.DateTimeFormat().resolvedOptions().timeZone}
+          </p>
+        </div>
+
+        <p className="text-xl font-bold uppercase">
+          {new Date().toLocaleTimeString("en-GB", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          })}
+        </p>
+      </div>
+
+      <hr className="mt-10 mb-5" />
+
+      <div className="flex items-center justify-between">
+        <div>
+          <Image
+            src={`https://www.weatherbit.io/static/img/icons/${
+                weatherCodeToString[result.current_weather.weathercode].icon
+            }.png`}
+
+            alt={weatherCodeToString[result.current_weather.weathercode].label}
+            width={75}
+            height={75}
+          />
+
+          <div className="flex justify-between items-center space-x-10">
+            <p className="text-6xl font-bold">{result.current_weather.temperature.toFixed(1)}°C</p>
+            <p className="font-extralight text-lg text-right">{weatherCodeToString[result.current_weather.weathercode].label}</p>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default InformationPanel
+export default InformationPanel;

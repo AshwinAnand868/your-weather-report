@@ -11,7 +11,7 @@ type CurrentWeather = {
     is_day: string
     temperature: number
     time: string
-    weathercode: string
+    weathercode: number
     winddirection: number
     windspeed: number
 }
