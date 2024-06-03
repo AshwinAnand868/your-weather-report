@@ -1,23 +1,3 @@
-type CountryOption = {
-    value: {
-        latitude: string,
-        longitude: string,
-        isoCode: string
-    },
-    label: string
-} | null;
-
-type CityOption = {
-    value: {
-        latitude: string,
-        longitude: string,
-        countryCode: string,
-        name: string,
-        stateCode: string,
-    }, 
-    label: string,
-} | null;
-
 // type CurrentWeather = {
 //     temperature: number,
 //     time: string,
@@ -29,11 +9,11 @@ type CityOption = {
 type CurrentWeather = {
     // interval: String
     is_day: string
-    temperature: string
+    temperature: number
     time: string
     weathercode: string
-    winddirection: string
-    windspeed: string
+    winddirection: number
+    windspeed: number
 }
 
 type Daily = {

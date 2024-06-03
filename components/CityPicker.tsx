@@ -6,6 +6,26 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Select from "react-select";
 
+type CountryOption = {
+  value: {
+      latitude: string,
+      longitude: string,
+      isoCode: string
+  },
+  label: string
+} | null;
+
+type CityOption = {
+  value: {
+      latitude: string,
+      longitude: string,
+      countryCode: string,
+      name: string,
+      stateCode: string,
+  }, 
+  label: string,
+} | null;
+
 const countryOptions = Country.getAllCountries().map((country) => {
   return {
     value: {
