@@ -14,7 +14,7 @@ export default function Home() {
 
         <Card className="bg-gradient-to-br from-[#394568] to-[#1837BE]">
           <CityPicker />
-        </Card>
+        </Card> 
       </Card>
     </div>
   );
