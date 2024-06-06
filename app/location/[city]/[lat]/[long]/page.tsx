@@ -15,6 +15,7 @@ interface Props {
 const WeatherPage = async ({ params }: Props) => {
   const { city, lat, long } = params;
   const client = getClient();
+
   const { data } = await client.query({
     query: fetchWeatherQuery,
     variables: {
@@ -25,9 +26,7 @@ const WeatherPage = async ({ params }: Props) => {
     },
   });
 
-  const result: Root = data.myQuery;
-
-  // console.log(result);
+  const result: Root = data.fetchWeatherDataField;
 
   return (
     <div>
@@ -90,8 +89,6 @@ const WeatherPage = async ({ params }: Props) => {
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   );
