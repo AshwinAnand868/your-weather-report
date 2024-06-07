@@ -2,6 +2,7 @@ import { getClient } from "@/apollo-client";
 import CalloutCard from "@/components/CalloutCard";
 import InformationPanel from "@/components/InformationPanel";
 import StatCard from "@/components/StatCard";
+import TempChart from "@/components/TempChart";
 import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 
 interface Props {
@@ -88,6 +89,11 @@ const WeatherPage = async ({ params }: Props) => {
               />
             </div>
           </div>
+        </div>
+
+        <hr className="mb-5" />
+        <div className="space-y-3">
+              <TempChart result={result} />
         </div>
       </div>
     </div>
