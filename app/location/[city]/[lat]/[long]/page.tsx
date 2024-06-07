@@ -29,9 +29,9 @@ const WeatherPage = async ({ params }: Props) => {
   const result: Root = data.fetchWeatherDataField;
 
   return (
-    <div>
+    <div className="flex flex-col md:flex-row min-h-screen">
       <InformationPanel city={city} result={result} lat={lat} long={long} />
-      <div>
+      <div className="flex-1 p-5 lg:p-10">
         <div className="p-5">
           <div className="pb-5">
             <h2 className="text-xl font-bold">Todays Overview</h2>
