@@ -84,7 +84,6 @@ function InformationPanel({ city, result, lat, long }: Props) {
                 minute: "numeric",
                 hour12: true,
               })}
-              <span className="text-xs">&nbsp; GMT</span>
             </p>
           </div>
         </div>
@@ -100,7 +99,6 @@ function InformationPanel({ city, result, lat, long }: Props) {
                 minute: "numeric",
                 hour12: true,
               })}
-              <span className="text-xs">&nbsp; GMT</span>
             </p>
           </div>
         </div>

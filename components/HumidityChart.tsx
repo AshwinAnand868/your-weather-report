@@ -2,13 +2,11 @@
 
 import { AreaChart, Card, Title } from "@tremor/react";
 
-type TempChartProps = {
+type HumidityChartProps = {
     result: Root
 }
 
-function TempChart({result}: TempChartProps) {
-
-
+function HumidityChart({result}: HumidityChartProps) {
     const hourly = result.hourly.time
                     .slice(0, 24)
                     .map(time => new Date(time).toLocaleString("en-US", {
@@ -18,27 +16,27 @@ function TempChart({result}: TempChartProps) {
     
     const data = hourly.map((hour, i) => ({
         time: Number(hour),
-        "UV Index": result.hourly.uv_index[i],
-        "Temperature (°C)": result.hourly.temperature_2m[i],
+        "Humidity (%)": result.hourly.relative_humidity_2m[i],
     }));
 
     const dataFormatter = (num: number) => {
-      return  num.toString()
+      return  `${num.toString()} %`
     }
 
   return (
     <Card>
-        <Title>Temperature & UV Index</Title>
+        <Title>Humidity Levels</Title>
         <AreaChart
-            className="mt-6 h-72 text-[15px]"
+            className="mt-6"
             data={data}
             showLegend
             index="time"
-            categories={["Temperature (°C)", "UV Index"]}
-            colors={["yellow", "rose"]}
+            categories={["Humidity (%)"]}
+            colors={["teal"]}
             minValue={0}
+            maxValue={100}
             valueFormatter={dataFormatter}
-            yAxisWidth={40}
+            yAxisWidth={60}
             xAxisLabel="24 Hours (Time)"
             showAnimation={true}
         />
@@ -46,4 +44,4 @@ function TempChart({result}: TempChartProps) {
   )
 }
 
-export default TempChart
+export default HumidityChart;

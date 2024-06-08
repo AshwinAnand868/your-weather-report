@@ -1,6 +1,8 @@
 import { getClient } from "@/apollo-client";
 import CalloutCard from "@/components/CalloutCard";
+import HumidityChart from "@/components/HumidityChart";
 import InformationPanel from "@/components/InformationPanel";
+import RainChart from "@/components/RainChart";
 import StatCard from "@/components/StatCard";
 import TempChart from "@/components/TempChart";
 import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
@@ -63,7 +65,7 @@ const WeatherPage = async ({ params }: Props) => {
             <div>
               <StatCard
                 title="UV Index"
-                metric={`${result.daily.uv_index_max[0].toFixed(1)}°`}
+                metric={`${result.daily.uv_index_max[0].toFixed(1)}`}
                 color="rose"
               />
 
@@ -94,6 +96,8 @@ const WeatherPage = async ({ params }: Props) => {
         <hr className="mb-5" />
         <div className="space-y-3">
               <TempChart result={result} />
+              <RainChart result={result} />
+              <HumidityChart result={result} />
         </div>
       </div>
     </div>
