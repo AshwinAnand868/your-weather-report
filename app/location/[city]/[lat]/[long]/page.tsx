@@ -7,6 +7,8 @@ import StatCard from "@/components/StatCard";
 import TempChart from "@/components/TempChart";
 import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 
+export const revalidate = 60; // rebuilds the page after every 60 seconds to avoid providing static data
+
 interface Props {
   params: {
     city: string;
