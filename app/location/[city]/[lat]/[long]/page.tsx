@@ -6,6 +6,8 @@ import RainChart from "@/components/RainChart";
 import StatCard from "@/components/StatCard";
 import TempChart from "@/components/TempChart";
 import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
+import cleanData from "@/lib/cleanData";
+import getBasePath from "@/lib/getBasePath";
 
 export const revalidate = 60; // rebuilds the page after every 60 seconds to avoid providing static data
 
@@ -33,6 +35,21 @@ const WeatherPage = async ({ params }: Props) => {
 
   const result: Root = data.fetchWeatherDataField;
 
+  const dataToSend = cleanData(result, city);
+
+  const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      weatherData: dataToSend,
+    }),
+  });
+
+  const GPTdata = await res.json();
+  const { content } = GPTdata;
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       <InformationPanel city={city} result={result} lat={lat} long={long} />
@@ -48,7 +65,7 @@ const WeatherPage = async ({ params }: Props) => {
           </div>
 
           <div className="m-2 mb-10">
-            <CalloutCard message="This is where GPT Summary will go!" />
+            <CalloutCard message={content} />
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
@@ -97,9 +114,9 @@ const WeatherPage = async ({ params }: Props) => {
 
         <hr className="mb-5" />
         <div className="space-y-3">
-              <TempChart result={result} />
-              <RainChart result={result} />
-              <HumidityChart result={result} />
+          <TempChart result={result} />
+          <RainChart result={result} />
+          <HumidityChart result={result} />
         </div>
       </div>
     </div>
