@@ -1,3 +1,5 @@
+'use client';
+
 import weatherCodeToString from "@/lib/weatherCodeToString";
 import { MoonIcon, SunIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
