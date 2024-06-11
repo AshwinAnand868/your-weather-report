@@ -26,7 +26,7 @@ function InformationPanel({ city, result, lat, long }: Props) {
 
       <hr className="my-10" />
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-8">
         <div>
           <p className="text-xl">
             {new Date().toLocaleDateString("en-GB", {
@@ -63,7 +63,7 @@ function InformationPanel({ city, result, lat, long }: Props) {
             height={75}
           />
 
-          <div className="flex justify-between items-center space-x-10">
+          <div className="flex justify-between items-center space-x-14">
             <p className="text-6xl font-bold">
               {result.current_weather.temperature.toFixed(1)}°C
             </p>
