@@ -3,6 +3,8 @@
 import weatherCodeToString from "@/lib/weatherCodeToString";
 import { MoonIcon, SunIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 import CityPicker from "./CityPicker";
 
 type Props = {
@@ -13,6 +15,25 @@ type Props = {
 };
 
 function InformationPanel({ city, result, lat, long }: Props) {
+
+  useEffect(() => {
+    const showToast = () => {
+      toast.info('All timings on this page are based on your current timezone', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        toastId: "timezone-message"
+      });
+    };
+
+    showToast();
+  }, []);
+
   return (
     <div className="bg-gradient-to-br from-[#394568] to-[#1837BE] text-white p-10 min-w-[368px]">
       <div className="pb-5">
