@@ -7,7 +7,7 @@ export default function Home() {
       <Card className="max-w-4xl mx-auto mt-7">
         <Text className="text-4xl md:text-6xl font-bold text-center mb-10">Weather AI</Text>
         <Subtitle className="text-xl text-center">
-          Powered by Open AI, Next.js 13.3, Tailwind CSS, Tremor 2.0 and more!
+          Powered by GROQ AI, Next.js, Tailwind CSS, Tremor, Hygraph and more!
         </Subtitle>
 
         <Divider className="my-8" />
